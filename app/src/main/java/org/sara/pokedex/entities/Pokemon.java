@@ -26,7 +26,7 @@ public class Pokemon {
 
         String assetId = id;
 
-        if(id.length() == 1) {
+        if (id.length() == 1) {
             assetId = "00" + id;
         } else if (id.length() == 2) {
             assetId = "0" + id;

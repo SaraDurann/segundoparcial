@@ -11,17 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SplashActivity">
+        <activity android:name=".activities.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PokemonTypeActivity" />
-        <activity android:name=".activities.FavoritesActivity" />
-        <activity android:name=".activities.PokemonTypes" />
-        <activity android:name=".activities.PokemonDetailsActivity" />
+        <activity android:name=".activities.PokemonTypeActivity"
+            android:theme="@style/TypeTheme"
+            android:label="Tipo de Pokemon"/>
+        <activity android:name=".activities.PokemonDetailsActivity"
+            android:theme="@style/DetailsTheme"
+            android:label="Detalles del Pokemon"/>
         <activity android:name=".activities.MainActivity"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

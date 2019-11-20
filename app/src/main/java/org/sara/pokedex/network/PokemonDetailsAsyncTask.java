@@ -1,7 +1,6 @@
 package org.sara.pokedex.network;
 
 
-
 import android.os.AsyncTask;
 import android.util.Log;
 

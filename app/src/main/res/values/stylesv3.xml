@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DetailsTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary" type="color">#F44336</item>
+        <item name="colorPrimaryDark">#691B15</item>
+        <item name="colorAccent">#2196F3</item>
+    </style>
+</resources>

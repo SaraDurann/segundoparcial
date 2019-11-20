@@ -24,14 +24,14 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
     private ItemClickListener mClickListener;
     private Context mContext;
 
-    // data is passed into the constructor
+    // la informacion pasa dentro del constructor
     public PokemonAdapter(Context context, List<Pokemon> data) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
 
-    // inflates the cell layout from xml when needed
+    // infla el diseño de la celda desde xml cuando es necesario
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,7 +39,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each cell
+    // enlaza los datos a TextView en cada celda
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Pokemon pokemon = mData.get(position);
@@ -48,14 +48,14 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         holder.pokemonName.setText(pokemon.getName());
     }
 
-    // total number of cells
+    // numero total de celdas
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
 
-    // stores and recycles views as they are scrolled off screen
+    // almacena y recicla vistas a medida que se desplazan fuera de la pantalla
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView pokemonName;
         ImageView pokemonImage;
@@ -73,7 +73,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         }
     }
 
-    // convenience method for getting data at click position
+    // Metodo conveniente para obtener datos en la posicion de click
     public Pokemon getPokemon(int id) {
         return mData.get(id);
     }
@@ -83,7 +83,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         this.mClickListener = itemClickListener;
     }
 
-    // parent activity will implement this method to respond to click events
+    // la actividad principal implementara este metodo para responder a eventos de click
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }

@@ -6,7 +6,7 @@ import java.util.Map;
 public class PokemonType {
 
     private String name;
-    private  Map<String, List<String>> damageRelations;
+    private Map<String, List<String>> damageRelations;
     private List<Pokemon> pokemons;
 
     public static String[] relationNames = {"double_damage_from", "double_damage_to", "half_damage_from",

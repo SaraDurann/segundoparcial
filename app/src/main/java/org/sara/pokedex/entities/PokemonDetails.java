@@ -18,7 +18,7 @@ public class PokemonDetails {
 
         String assetId = String.valueOf(id);
 
-        if(assetId.length() == 1) {
+        if (assetId.length() == 1) {
             assetId = "00" + id;
         } else if (assetId.length() == 2) {
             assetId = "0" + id;

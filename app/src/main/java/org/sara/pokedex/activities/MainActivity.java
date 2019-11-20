@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskHandler,
     RecyclerView recyclerView;
     ProgressBar progressBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,24 +42,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskHandler,
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_favorites, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item_favorites:
-                Intent intent = new Intent(this, FavoritesActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+    //aqui irá favoritos
 
     @Override
     public void onTaskEnd(Object pokemons) {

@@ -17,7 +17,7 @@ import java.util.List;
 import static org.sara.pokedex.network.NetworkUtils.createUrl;
 import static org.sara.pokedex.network.NetworkUtils.makeHttpRequest;
 
- public class PokemonAsyncTask extends AsyncTask<Void, Void, List<Pokemon>> {
+public class PokemonAsyncTask extends AsyncTask<Void, Void, List<Pokemon>> {
 
     public AsyncTaskHandler handler;
 
@@ -48,20 +48,20 @@ import static org.sara.pokedex.network.NetworkUtils.makeHttpRequest;
         }
     }
 
-     private List<Pokemon> listapokemon(String jsonStr) {
-         try {
-             JSONObject jsonObj = new JSONObject(jsonStr);
-             JSONArray jsonArray = jsonObj.getJSONArray("results");
-             ArrayList<Pokemon> pokemonShortList = new ArrayList<>();
-             for (int i = 0; i < jsonArray.length(); i++) {
-                 String url = jsonArray.getJSONObject(i).getString("url");
-                 String name = jsonArray.getJSONObject(i).getString("name");
-                 pokemonShortList.add(new Pokemon(name, url));
-             }
-             return pokemonShortList;
-         } catch (JSONException e) {
-             e.printStackTrace();
-         }
-         return null;
-     }
+    private List<Pokemon> listapokemon(String jsonStr) {
+        try {
+            JSONObject jsonObj = new JSONObject(jsonStr);
+            JSONArray jsonArray = jsonObj.getJSONArray("results");
+            ArrayList<Pokemon> pokemonShortList = new ArrayList<>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String url = jsonArray.getJSONObject(i).getString("url");
+                String name = jsonArray.getJSONObject(i).getString("name");
+                pokemonShortList.add(new Pokemon(name, url));
+            }
+            return pokemonShortList;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
