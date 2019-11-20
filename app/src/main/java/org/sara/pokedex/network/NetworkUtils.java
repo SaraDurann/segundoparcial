@@ -1,7 +1,6 @@
 package org.sara.pokedex.network;
 
 import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,7 +51,7 @@ public class NetworkUtils {
                 urlConnection.disconnect();
             }
             if (inputStream != null) {
-                // function must handle java.io.IOException here
+                // la función debe manejar java.io.IOException aquí
                 inputStream.close();
             }
         }

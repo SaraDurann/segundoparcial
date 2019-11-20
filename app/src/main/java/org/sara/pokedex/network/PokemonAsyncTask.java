@@ -35,7 +35,7 @@ public class PokemonAsyncTask extends AsyncTask<Void, Void, List<Pokemon>> {
             jsonResponse = makeHttpRequest(url);
             return listapokemon(jsonResponse);
         } catch (IOException e) {
-            Log.e("Download error", "Problem making the HTTP request.", e);
+            Log.e("Error al descargar", "Problem making the HTTP request.", e);
         }
         return new ArrayList<>();
     }

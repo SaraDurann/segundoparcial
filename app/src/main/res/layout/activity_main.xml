@@ -5,6 +5,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0F0F0"
     android:gravity="center"
     android:theme="@style/ToolbarTheme"
     tools:context=".activities.MainActivity">
@@ -13,11 +14,14 @@
         android:id="@+id/rv_pokemon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
         android:fitsSystemWindows="false"
+        android:gravity="center"
         android:paddingStart="20dp"
         android:paddingTop="15dp"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

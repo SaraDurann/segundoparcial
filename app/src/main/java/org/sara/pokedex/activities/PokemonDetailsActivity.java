@@ -30,7 +30,7 @@ public class PokemonDetailsActivity extends AppCompatActivity implements AsyncTa
     AppDatabase database;
 
 
-    // Pokemon info
+    // Informacion de los Pokemon
     String url;
     String pokemonName;
 
