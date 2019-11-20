@@ -70,12 +70,18 @@ public class PokemonTypeAsyncTask extends AsyncTask<String, Void, PokemonType> {
 
             List<Pokemon> pokemons = new ArrayList<>();
             JSONArray pokemonsArray = jsonObj.getJSONArray("pokemon");
-            int iterations = pokemonsArray.length() < 6 ? pokemonsArray.length() : 6;
-            for (int i = 0; i < iterations; i++) {
+
+            for (int i = 0; i < pokemonsArray.length(); i++) {
                 JSONObject pokemonJson = pokemonsArray.getJSONObject(i).getJSONObject("pokemon");
                 String url = pokemonJson.getString("url");
-                String pokemonName = pokemonJson.getString("name");
-                pokemons.add(new Pokemon(pokemonName, url));
+                if(isFromGeneration(url)) {
+                    String pokemonName = pokemonJson.getString("name");
+                    pokemons.add(new Pokemon(pokemonName, url));
+
+                    if(pokemons.size() == 6) {
+                        break;
+                    }
+                }
             }
 
             PokemonType pokemonType = new PokemonType(name, damageRelations, pokemons);
@@ -84,5 +90,13 @@ public class PokemonTypeAsyncTask extends AsyncTask<String, Void, PokemonType> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private boolean isFromGeneration(String pokemonUrl) {
+        String txtId = pokemonUrl.replace("https://pokeapi.co/api/v2/pokemon/", "")
+                .replace("/", "");
+        int id = Integer.valueOf(txtId);
+
+        return id >= 386 && id <= 493;
     }
 }

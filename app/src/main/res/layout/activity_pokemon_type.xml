@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="15sp"
-        android:layout_marginBottom="15sp"
-        android:src="@drawable/type_cover" />
+        android:layout_marginBottom="15sp" />
 
     <TextView
         android:id="@+id/type_name"

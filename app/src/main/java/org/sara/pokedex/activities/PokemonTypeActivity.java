@@ -20,6 +20,7 @@ import org.sara.pokedex.entities.Pokemon;
 import org.sara.pokedex.entities.PokemonType;
 import org.sara.pokedex.interfaces.AsyncTaskHandler;
 import org.sara.pokedex.network.PokemonTypeAsyncTask;
+import org.sara.pokedex.utils.Utils;
 
 public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskHandler, PokemonAdapter.ItemClickListener {
 
@@ -60,6 +61,9 @@ public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskH
         adapter = new PokemonAdapter(this, pokemonType.getPokemons());
         adapter.setClickListener(this);
         pokemons.setAdapter(adapter);
+
+        String coverName = "type_" + pokemonType.getName();
+        Glide.with(this).load(Utils.getDrawable(this, coverName)).into(cover);
     }
 
     @Override
