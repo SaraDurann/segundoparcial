@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import org.sara.pokedex.database.AppDataBaseSingleton;
 import org.sara.pokedex.database.AppDatabase;
 import org.sara.pokedex.entities.Pokemon;
 import org.sara.pokedex.interfaces.AsyncTaskHandler;

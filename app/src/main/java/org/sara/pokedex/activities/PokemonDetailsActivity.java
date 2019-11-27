@@ -95,6 +95,7 @@ public class PokemonDetailsActivity extends AppCompatActivity implements AsyncTa
         } else {
             Pokemon pokemon = new Pokemon(pokemonName, url);
             database.pokemonDao().insertAll(pokemon);
+            favoritePokemon = pokemon;
             Glide.with(this).load(R.drawable.favorite).into(favorite);
         }
     }

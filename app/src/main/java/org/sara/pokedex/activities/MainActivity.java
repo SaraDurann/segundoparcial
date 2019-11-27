@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements AsyncTaskHandler,
     @Override
     public void onTaskEnd(Object pokemons) {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        adapter = new PokemonAdapter(this, (List<Pokemon>) pokemons);
+        adapter = new PokemonAdapter(this, (List<Pokemon>) pokemons, false);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         progressBar.setVisibility(View.GONE);

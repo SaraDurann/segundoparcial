@@ -22,12 +22,14 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapterViewHolde
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private Context mContext;
+    private boolean isFavoriteList = false;
 
     // la informacion pasa dentro del constructor
-    public PokemonAdapter(Context context, List<Pokemon> data) {
+    public PokemonAdapter(Context context, List<Pokemon> data, boolean isFavoriteList) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+        this.isFavoriteList = isFavoriteList;
     }
 
     // infla el diseño de la celda desde xml cuando es necesario
@@ -45,6 +47,11 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapterViewHolde
 
         Glide.with(mContext).load(pokemon.getImage()).into(holder.iv_pokemon_image);
         holder.tv_pokemon_name.setText(pokemon.getName());
+
+        if (isFavoriteList) {
+            Glide.with(mContext).load(R.drawable.favorite).into(holder.iv_pokemon_favorite);
+            holder.iv_pokemon_favorite.setVisibility(View.VISIBLE);
+        }
     }
 
     // total number of cells

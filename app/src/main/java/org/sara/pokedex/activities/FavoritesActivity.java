@@ -1,14 +1,19 @@
 package org.sara.pokedex.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+
+import com.bumptech.glide.Glide;
 
 import org.sara.pokedex.R;
 
@@ -26,7 +31,7 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonAdapt
     RecyclerView recyclerView;
     AppDatabase database;
     List<Pokemon> favoritePokemons;
-    PokemonFavAdapter adapter;
+    int selectedPosition;
 
 
     @Override
@@ -40,7 +45,7 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonAdapt
         favoritePokemons = database.pokemonDao().getAll();
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        adapter = new PokemonAdapter(this, favoritePokemons);
+        adapter = new PokemonAdapter(this, favoritePokemons, true);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
@@ -56,10 +61,47 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonAdapt
 
     @Override
     public void onItemClick(View view, int position) {
-        Pokemon selectedPokemon = adapter.getPokemon(position);
+        if(view.getId() == R.id.iv_pokemon_favorite) {
+            selectedPosition = position;
+            showAlert(this);
+        }
+        else {
+            Pokemon selectedPokemon = adapter.getPokemon(position);
 
-        Intent intent = new Intent(this, PokemonDetailsActivity.class);
-        intent.putExtra("URL", selectedPokemon.getUrl());
-        startActivity(intent);
+            Intent intent = new Intent(this, PokemonDetailsActivity.class);
+            intent.putExtra("URL", selectedPokemon.getUrl());
+            startActivity(intent);
+        }
+    }
+
+    private void showAlert(final Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("¿Seguro que quieres eliminar este pokemón de favoritos?");
+
+        // Add the buttons
+        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Pokemon pokemon = adapter.getPokemon(selectedPosition);
+                database.pokemonDao().delete(pokemon);
+                favoritePokemons.remove(pokemon);
+                adapter.notifyItemRemoved(selectedPosition);
+
+                if(favoritePokemons.isEmpty()) {
+                    finish();
+                }
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
+        // Create the AlertDialog
+        AlertDialog dialog = builder.create();
+
+        // Show
+        dialog.show();
     }
 }

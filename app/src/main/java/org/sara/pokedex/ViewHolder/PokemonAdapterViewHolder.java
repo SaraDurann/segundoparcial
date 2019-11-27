@@ -13,6 +13,7 @@ public class PokemonAdapterViewHolder extends RecyclerView.ViewHolder implements
 
     public TextView tv_pokemon_name;
     public ImageView iv_pokemon_image;
+    public ImageView iv_pokemon_favorite;
     private PokemonAdapter.ItemClickListener mClickListener;
 
     public PokemonAdapterViewHolder(View itemView, PokemonAdapter.ItemClickListener listener) {
@@ -20,6 +21,8 @@ public class PokemonAdapterViewHolder extends RecyclerView.ViewHolder implements
         mClickListener = listener;
         tv_pokemon_name = itemView.findViewById(R.id.tv_pokemon_name);
         iv_pokemon_image = itemView.findViewById(R.id.iv_pokemon_image);
+        iv_pokemon_favorite = itemView.findViewById(R.id.iv_pokemon_favorite);
+        iv_pokemon_favorite.setOnClickListener(this);
         itemView.setOnClickListener(this);
     }
 
