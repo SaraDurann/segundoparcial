@@ -16,19 +16,20 @@ import com.bumptech.glide.Glide;
 import org.sara.pokedex.R;
 import org.sara.pokedex.adapters.DamageRelationAdapter;
 import org.sara.pokedex.adapters.PokemonAdapter;
+import org.sara.pokedex.adapters.PokemonTypeAdapter;
 import org.sara.pokedex.entities.Pokemon;
 import org.sara.pokedex.entities.PokemonType;
 import org.sara.pokedex.interfaces.AsyncTaskHandler;
 import org.sara.pokedex.network.PokemonTypeAsyncTask;
 import org.sara.pokedex.utils.Utils;
 
-public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskHandler, PokemonAdapter.ItemClickListener {
+public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskHandler, PokemonTypeAdapter.ItemClickListener {
 
     ImageView cover;
     TextView name;
     RecyclerView damageRelations;
     RecyclerView pokemons;
-    PokemonAdapter adapter;
+    PokemonTypeAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +58,8 @@ public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskH
         damageRelations.setLayoutManager(new LinearLayoutManager(this));
         damageRelations.setAdapter(new DamageRelationAdapter(this, pokemonType));
 
-        pokemons.setLayoutManager(new GridLayoutManager(this, 3));
-        adapter = new PokemonAdapter(this, pokemonType.getPokemons());
+        pokemons.setLayoutManager(new GridLayoutManager(this, 1));
+        adapter = new PokemonTypeAdapter(this, pokemonType.getPokemons());
         adapter.setClickListener(this);
         pokemons.setAdapter(adapter);
 

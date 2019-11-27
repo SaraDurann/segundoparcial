@@ -11,20 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SplashActivity"
+        <activity android:name=".activities.FavoritesActivity"
+            android:label="Favoritos"
+            android:theme="@style/FavTheme" >
+
+        </activity>
+        <activity
+            android:name=".activities.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PokemonTypeActivity"
-            android:theme="@style/TypeTheme"
-            android:label="Tipo de Pokemon"/>
-        <activity android:name=".activities.PokemonDetailsActivity"
-            android:theme="@style/DetailsTheme"
-            android:label="Detalles del Pokemon"/>
-        <activity android:name=".activities.MainActivity"/>
+        <activity
+            android:name=".activities.PokemonTypeActivity"
+            android:label="Tipo de Pokémon"
+            android:theme="@style/TypeTheme" />
+        <activity
+            android:name=".activities.PokemonDetailsActivity"
+            android:label="Detalles del Pokémon"
+            android:theme="@style/DetailsTheme" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="Pokédex Generación IV" />
 
         <meta-data
             android:name="preloaded_fonts"

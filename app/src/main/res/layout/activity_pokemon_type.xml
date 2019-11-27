@@ -17,10 +17,14 @@
 
     <TextView
         android:id="@+id/type_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/texto_redondo"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
         android:fontFamily="@font/montserrat_bold"
         android:textAlignment="center"
+        android:textColor="#FDFCFC"
         android:textSize="30sp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -32,8 +36,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/type_pokemons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15sp"
-        android:layout_marginRight="5sp" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

@@ -11,13 +11,16 @@
         android:id="@+id/iv_pokemon_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/boton_redondo"/>
 
     <TextView
         android:id="@+id/tv_pokemon_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/texto_redondo"
         android:fontFamily="@font/montserrat"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

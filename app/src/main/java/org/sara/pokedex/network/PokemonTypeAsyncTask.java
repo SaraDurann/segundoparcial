@@ -2,6 +2,7 @@ package org.sara.pokedex.network;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,12 +10,14 @@ import org.sara.pokedex.entities.Pokemon;
 import org.sara.pokedex.entities.PokemonDetails;
 import org.sara.pokedex.entities.PokemonType;
 import org.sara.pokedex.interfaces.AsyncTaskHandler;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import static org.sara.pokedex.network.NetworkUtils.createUrl;
 import static org.sara.pokedex.network.NetworkUtils.makeHttpRequest;
 
@@ -93,6 +96,8 @@ public class PokemonTypeAsyncTask extends AsyncTask<String, Void, PokemonType> {
                 .replace("/", "");
         int id = Integer.valueOf(txtId);
 
-        return id >= 386 && id <= 493;
+        return id >= 0;
+        //regresa pokemones de la misma generacion
+        /*return id >= 386 && id <= 493;*/
     }
 }

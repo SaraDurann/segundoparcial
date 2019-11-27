@@ -1,4 +1,4 @@
-package org.sara.pokedex.network;
+package org.sara.pokedex.ViewHolder;
 
 import android.view.View;
 import android.widget.ImageView;

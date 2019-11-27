@@ -5,18 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 
 import org.sara.pokedex.R;
 import org.sara.pokedex.entities.Pokemon;
-import org.sara.pokedex.network.PokemonAdapterViewHolder;
+
+import org.sara.pokedex.ViewHolder.PokemonTypeViewHolder;
 
 import java.util.List;
 
-public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapterViewHolder> {
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class PokemonTypeAdapter extends RecyclerView.Adapter<PokemonTypeViewHolder> {
 
     private List<Pokemon> mData;
     private LayoutInflater mInflater;
@@ -24,7 +25,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapterViewHolde
     private Context mContext;
 
     // la informacion pasa dentro del constructor
-    public PokemonAdapter(Context context, List<Pokemon> data) {
+    public PokemonTypeAdapter(Context context, List<Pokemon> data) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
@@ -33,14 +34,14 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapterViewHolde
     // infla el diseño de la celda desde xml cuando es necesario
     @Override
     @NonNull
-    public PokemonAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.pokemon_item, parent, false);
-        return new PokemonAdapterViewHolder(view, mClickListener);
+    public PokemonTypeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.pokemon_item_list, parent, false);
+        return new PokemonTypeViewHolder(view, mClickListener);
     }
 
     // binds the data to the TextView in each cell
     @Override
-    public void onBindViewHolder(@NonNull PokemonAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PokemonTypeViewHolder holder, int position) {
         Pokemon pokemon = mData.get(position);
 
         Glide.with(mContext).load(pokemon.getImage()).into(holder.iv_pokemon_image);

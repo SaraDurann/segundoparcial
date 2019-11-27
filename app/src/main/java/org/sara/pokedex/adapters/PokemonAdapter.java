@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,10 +12,11 @@ import com.bumptech.glide.Glide;
 
 import org.sara.pokedex.R;
 import org.sara.pokedex.entities.Pokemon;
+import org.sara.pokedex.ViewHolder.PokemonAdapterViewHolder;
 
 import java.util.List;
 
-public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHolder> {
+public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapterViewHolder> {
 
     private List<Pokemon> mData;
     private LayoutInflater mInflater;
@@ -34,46 +33,27 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
     // infla el diseño de la celda desde xml cuando es necesario
     @Override
     @NonNull
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PokemonAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.pokemon_item, parent, false);
-        return new ViewHolder(view);
+        return new PokemonAdapterViewHolder(view, mClickListener);
     }
 
-    // enlaza los datos a TextView en cada celda
+    // binds the data to the TextView in each cell
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PokemonAdapterViewHolder holder, int position) {
         Pokemon pokemon = mData.get(position);
 
-        Glide.with(mContext).load(pokemon.getImage()).into(holder.pokemonImage);
-        holder.pokemonName.setText(pokemon.getName());
+        Glide.with(mContext).load(pokemon.getImage()).into(holder.iv_pokemon_image);
+        holder.tv_pokemon_name.setText(pokemon.getName());
     }
 
-    // numero total de celdas
+    // total number of cells
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
-
-    // almacena y recicla vistas a medida que se desplazan fuera de la pantalla
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView pokemonName;
-        ImageView pokemonImage;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-            pokemonName = itemView.findViewById(R.id.tv_pokemon_name);
-            pokemonImage = itemView.findViewById(R.id.iv_pokemon_image);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
-    }
-
-    // Metodo conveniente para obtener datos en la posicion de click
+    // convenience method for getting data at click position
     public Pokemon getPokemon(int id) {
         return mData.get(id);
     }
@@ -83,7 +63,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.ViewHold
         this.mClickListener = itemClickListener;
     }
 
-    // la actividad principal implementara este metodo para responder a eventos de click
+    // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }

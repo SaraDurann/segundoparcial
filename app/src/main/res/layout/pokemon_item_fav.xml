@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:id="@+id/pokemon_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="30dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_pokemon_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/boton_redondo"/>
+
+    <TextView
+        android:id="@+id/tv_pokemon_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/texto_redondo"
+        android:fontFamily="@font/montserrat"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/details_favorite"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20sp"
+        android:onClick="onClickFavorite"
+        android:src="@drawable/favorite_empty" />
 
 </LinearLayout>

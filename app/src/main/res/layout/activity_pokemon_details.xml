@@ -14,18 +14,24 @@
         android:id="@+id/details_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_margin="30sp" />
+        android:layout_margin="30sp"
+        android:background="@drawable/fondo_redondo" />
 
     <TextView
         android:id="@+id/detatils_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/texto_redondo"
         android:fontFamily="@font/montserrat_bold"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:textColor="#FCFBFB"
         android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="15sp">
 
         <TextView
             android:id="@+id/detatils_type"
@@ -60,5 +66,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
         android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/details_favorite"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20sp"
+        android:onClick="onClickFavorite"
+        android:src="@drawable/favorite_empty" />
 
 </LinearLayout>

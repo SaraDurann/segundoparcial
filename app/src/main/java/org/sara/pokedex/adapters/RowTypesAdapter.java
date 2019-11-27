@@ -53,7 +53,7 @@ public class RowTypesAdapter extends RecyclerView.Adapter<RowTypesAdapter.ViewHo
         return types.size();
     }
 
-    // stores and recycles views as they are scrolled off screen
+    // stores and recycles views as they are scrolled off screen OTRA PANTALLA
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView typeImage;
 
